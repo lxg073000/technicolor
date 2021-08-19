@@ -1,92 +1,254 @@
+:root {
+  --LC: hsl(0deg 100% 50%);
+  --RC: hsl(60deg 100% 50%);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 100;
 }
+
+// mobile game tiles
+.background {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  margin: auto;
+  z-index: 1;
+  max-width: 101%;
+}
+target {
+  max-height: 100%;
+  max-width: 100%;
+  display: grid;
+  height: 400px;
+  width: 220px;
+  align-self: center;
+}
+.target_left {
+  grid-column: 2;
+  grid-row: 1;
+  background: var(--LC);
+  justify-self: flex-end;
+  * {
+    margin: auto;
+  }
+}
+.target_right {
+  grid-column: 3;
+  grid-row: 1;
+  background: var(--RC);
+  justify-self: flex-start;
+  * {
+    margin: auto;
+  }
+}
+
+.sm-menu {
+  display: none;
+}
+
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-section{
+  display: grid;
   height: 100vh;
-  width: calc(100vw / 11);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    transform: translateX(0vw);
-    transition: all 333ms ease-in;
-    &:hover{
-      width: 100vw;
-    }
+  padding: 2em 0;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 4em 1fr 4em;
+  gap: 1em;
+  place-content: center;
+  background: lightblue;
+}
+.game {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: grid;
+  grid-template-columns: 10px 1fr 1fr 10px;
+  grid-template-rows: 1fr;
 }
 
-body section:nth-child(1){
-  background: #f44336
+.header {
+  grid-column: 1 / -1;
+  align-content: center;
+  justify-content: center;
 }
-body section:nth-child(2){
-  background: #FAE800
+.tools {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
-body section:nth-child(3){
-  background: #7DCACE
+
+// section {
+//   height: 100vh;
+//   width: calc(100vw / 11);
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   color: white;
+//   transform: translateX(0vw);
+//   transition: all 333ms ease-in;
+//   &:hover {
+//     width: 100vw;
+//   }
+// }
+
+section {
+  height: 100%;
+  display: grid;
+  // place-content: center;
+  overflow: hidden;
 }
-body section:nth-child(4){
-  background: #6DB52B
-}
-body section:nth-child(5){
-  background: #BE368B
-}
-body section:nth-child(6){
-  background: #ebdcd3
-}
-body section:nth-child(7){
-    background: conic-gradient(from 15deg, #e32114, #e1d5cd 50%, #fae800 33%, #be368b 68%, #ead8dc -50%);
-}
-body section:nth-child(8){
-  background: #5F72FF
-}
-body section:nth-child(9){
-  background: #ff8da7
-}
-body section:nth-child(10){
-  background: #FAE800
-}
-body section:nth-child(11){
-  background: #7DCACE
-}
-body section:nth-child(12){
-  background: #6DB52B
-}
+
+// body section:nth-child(1) {
+//   background: #f44336;
+// }
+// body section:nth-child(2) {
+//   background: #fae800;
+// }
+// body section:nth-child(3) {
+//   background: #7dcace;
+// }
+// body section:nth-child(4) {
+//   background: #6db52b;
+// }
+// body section:nth-child(5) {
+//   background: #be368b;
+// }
+// body section:nth-child(6) {
+//   background: #ebdcd3;
+// }
+// body section:nth-child(7) {
+//   background: conic-gradient(
+//     from 15deg,
+//     #e32114,
+//     #e1d5cd 50%,
+//     #fae800 33%,
+//     #be368b 68%,
+//     #ead8dc -50%
+//   );
+// }
+// body section:nth-child(8) {
+//   background: #5f72ff;
+// }
+// body section:nth-child(9) {
+//   background: #ff8da7;
+// }
+// body section:nth-child(10) {
+//   background: #fae800;
+// }
+// body section:nth-child(11) {
+//   background: #7dcace;
+// }
+// body section:nth-child(12) {
+//   background: #6db52b;
+// }
 
 img.banner_game_background {
-    object-fit: cover;
-    position: relative;
-    width: 100%;
-    padding: 20% 0;
-    background: conic-gradient(from 
-270deg
-, #dccfc6 65%, #efe6df 80%, #d1bbae 40%);
-&:before{
-  content: "";
+  object-fit: cover;
+  position: relative;
+  width: 100%;
+  padding: 20% 0;
+  background: conic-gradient(
+    from 270deg,
+    #dccfc6 65%,
+    #efe6df 80%,
+    #d1bbae 40%
+  );
+  &:before {
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100px;
     height: 500px;
     background: red;
-}
+  }
 }
 
 @keyframes rotateBG {
-  0%   {background-color:#efe6df; left:0px; top:0px;}
-  25%  {background-color:#d8c6ba; left:200px; top:0px;}
-  50%  {background-color:#cfc9ba; left:200px; top:200px;}
-  75%  {background-color:#d8c6ba; left:0px; top:200px;}
-  100% {background-color:#efe6df; left:0px; top:0px;}
-  
+  0% {
+    background-color: #efe6df;
+    left: 0px;
+    top: 0px;
+  }
+  25% {
+    background-color: #d8c6ba;
+    left: 200px;
+    top: 0px;
+  }
+  50% {
+    background-color: #cfc9ba;
+    left: 200px;
+    top: 200px;
+  }
+  75% {
+    background-color: #d8c6ba;
+    left: 0px;
+    top: 200px;
+  }
+  100% {
+    background-color: #efe6df;
+    left: 0px;
+    top: 0px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  body {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr 10fr 1fr;
+    height: 100vh;
+    background: black;
+  }
+  .game {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    background: transparent;
+  }
+  .header {
+    grid-column: 2 / span 10;
+    img.logo {
+      margin: auto;
+      width: 100%;
+    }
+  }
+  .background {
+    display: none;
+  }
+  target {
+    width: 100%;
+    height: 100%;
+    align-self: auto;
+  }
+  .target_left {
+    display: grid;
+    grid-column: span 2;
+  }
+  .target_right {
+    display: grid;
+    grid-column: span 2;
+    grid-row: 2;
+  }
+  // .game {
+  //   grid-template-columns: 1fr;
+  //   display: grid;
+  //   place-content: center;
+  // }
+  .tools {
+    grid-column: 2 / span 10;
+    gap: 6px;
+    i {
+      font-size: 1em;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+  }
 }
