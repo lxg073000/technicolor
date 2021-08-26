@@ -1,59 +1,112 @@
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const path = require("path");
 const webpack = require("webpack");
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const path = require('path');
-
-var cssExtractTextPlugin = new ExtractTextPlugin('[name].css');
 
 module.exports = {
+  mode: "development",
+  // watch: true,
+  // watchOptions: {
+  //   aggregateTimeout: 200,
+  //   poll: 1000,
+  // },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, "./dist"),
+    open: true,
+    compress: true,
+    hot: true,
+    port: 8080,
+  },
   devServer: {
     port: 8000,
     historyApiFallback: true,
   },
 
   entry: {
-    'script': './src/index.js',
-    'style': './src/styles/index.scss',
-  },
-
-  module: {
-    rules: [
-      { test: /\.json$/, loader: 'json-loader'},
-      { test: /\.js$/, exclude: /(node_modules|bower_components)\//, loader: 'babel-loader'},
-      { test: /\.(ttf.*|eot.*|woff.*|ogg|mp3)$/, loader: 'file-loader'},
-      { test: /.(png|jpe?g|gif|svg.*)$/, loader: 'file-loader'},
-      {
-        test: /\.css$/,
-        loader: cssExtractTextPlugin.extract('css-loader'),
-      },
-      {
-        test: /\.scss$/,
-        loader: cssExtractTextPlugin.extract('css-loader!sass-loader'),
-      },
-    ],
-  },
-
-  plugins: [
-    cssExtractTextPlugin,
-    new HtmlWebPackPlugin({
-      template: "./index.html",
-      filename: "./index.html",
-      favicon: "./assets/images/favicon.png",
-    }),
-    new webpack.DefinePlugin({
-      CONFIG: JSON.stringify(require('config')),
-    }),
-  ],
-
-  resolve: {
-    modules: [
-      path.resolve(__dirname, 'src'),
-      path.resolve(__dirname, 'node_modules'),
-    ],
+    main: path.resolve(__dirname, "./src/index.js"),
   },
 
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
+    path: path.join(__dirname, "./dist"),
+    filename: "[name].bundle.js",
+    // // assetModuleFilename: "images/[hash][ext][query]",
+    // assetModuleFilename: "dist/[name][ext]",
+    assetModuleFilename: "./images/[name][ext]",
+  },
+
+  plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css",
+    }),
+    new HtmlWebpackPlugin({
+      title: "Technicolor",
+      template: path.resolve(__dirname, "./src/index.html"), // template file
+      filename: "index.html", // output file
+    }),
+    new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+
+  module: {
+    rules: [
+      // JavaScript
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"],
+      },
+      // Images
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        type: "asset/resource",
+      },
+      // Fonts and SVGs
+      {
+        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        type: "asset/inline",
+      },
+      // CSS, PostCSS, and Sass
+      {
+        test: /\.(scss|css)$/,
+        use: [
+          "style-loader",
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+
+          {
+            loader: "postcss-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+    ],
+  },
+
+  resolveLoader: {
+    modules: [path.join(__dirname, "node_modules")],
+  },
+  resolve: {
+    modules: [path.join(__dirname, "node_modules")],
+    alias: {
+      xyz$: path.resolve(__dirname, "path/to/file.js"),
+    },
   },
 };
