@@ -1,0 +1,8 @@
+#rules {
+  display: grid;
+  place-content: center;
+  margin: auto;
+  width: clamp(36ch, 400px, 600px);
+  text-align: center;
+  background: aliceblue;
+}

@@ -1,7 +1,15 @@
+@import "./partials/styles.scss";
+
 :root {
   --LC: hsl(0deg 100% 50%);
   --RC: hsl(60deg 100% 50%);
-  --TV-size: 750px;
+  --TV-left: 0;
+  --TV-top: 0;
+  --Score-left: 0;
+  --Score-top: 0;
+  --TV-size: 100%;
+  --Points-height: 0;
+  --Points-width: 0;
 }
 
 * {
@@ -16,7 +24,6 @@
   grid-column: 1 / -1;
   grid-row: 1;
   width: 70%;
-  margin-top: 1em;
   justify-self: center;
   align-self: center;
   z-index: 1;
@@ -25,6 +32,7 @@ target {
   width: clamp(150px, 40%, 100%);
   height: var(--TV-size);
   align-self: center;
+  pointer-events: all;
 }
 .target_left {
   grid-column: 2;
@@ -45,6 +53,35 @@ target {
   }
 }
 
+#score {
+  position: absolute;
+  left: calc(var(--Score-left));
+  top: calc(var(--Score-top));
+  color: wheat;
+  z-index: 2;
+  &:before {
+    content: "";
+    position: absolute;
+    top: -260%;
+    left: -122%;
+    transition: all 3s ease;
+  }
+}
+
+#points {
+  // background: #90ee906e;
+  width: var(--Points-height);
+  height: var(--Points-width);
+  grid-column: 1 / -1;
+  grid-row: 1;
+  z-index: 100;
+  margin: auto;
+  display: grid;
+  place-content: center;
+  font-size: calc(var(--Points-width) / 4);
+  transform: translate(0%, -27%) scale(0.5);
+  // opacity: 0;
+}
 .sm-menu {
   display: none;
 }
@@ -54,6 +91,7 @@ body {
   background: #fefdfb;
   background-image: url("../images/wallpaper_1.png");
   background-position: center;
+  pointer-events: none;
 }
 
 #root {
@@ -74,20 +112,23 @@ body {
   display: grid;
   grid-template-columns: 10px 1fr 1fr 10px;
   grid-template-rows: 1fr;
+  padding-top: 1em;
   border-radius: calc(100vw / 2);
   box-shadow: inset -13px -1px 16px 8px #56371694;
   width: clamp(837px, 100%, 1100px);
   justify-self: center;
   background: #faebd7bf;
+  pointer-events: none;
 }
 
 #remote {
   grid-column: 1 / -1;
   grid-row: 1;
-  z-index: 2;
+  z-index: 100;
   justify-self: center;
   transform: translate(3vw, 61vh) rotate(17deg);
   transition: transform 1s ease;
+  pointer-events: all;
   &:hover {
     transform: translate(4vw, 34%) rotate(0deg);
   }
