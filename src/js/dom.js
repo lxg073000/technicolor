@@ -13,6 +13,7 @@ export default class DOM {
     this.rightSwatch = document.getElementById("rightSwatch");
     this.score = document.getElementById("score");
     this.points = document.getElementById("points");
+    this.pointsVal = document.querySelector("#points > p");
     this.targets = document.querySelector("target");
 
     window.logo = this.logo;
@@ -20,6 +21,7 @@ export default class DOM {
     window.leftSwatch = this.leftSwatch;
     window.rightSwatch = this.rightSwatch;
     window.score = this.score;
+    window.newColor = newColor;
 
     this.colorConvert = require("color-convert");
 
@@ -40,13 +42,26 @@ export default class DOM {
     //Assign events
 
     this.gameWindow.addEventListener("resize", () => {
-      const tvBounds = this.background.getBoundingClientRect();
-      const scoreBounds = this.score.getBoundingClientRect();
+      let tvBounds = this.background.getBoundingClientRect();
+      let scoreBounds = this.score.getBoundingClientRect();
+      let pointsBounds = this.points.getBoundingClientRect();
 
-      const TVsize = getComputedStyle(this.background).height;
-      const targetSize = parseInt(TVsize) - 20;
+      let TVsize = getComputedStyle(this.background).height;
+      let targetSize = parseInt(TVsize) - 20;
 
       this.rootStyle.setProperty("--TV-size", `${targetSize}px`);
+      this.rootStyle.setProperty("--Swatch-width", `${targetSize / 4}px`);
+      this.rootStyle.setProperty("--Swatch-height", `${targetSize / 2}px`);
+      this.rootStyle.setProperty(
+        "--Points-top",
+        `${tvBounds.height * 0.42 - pointsBounds.height / 2}px`
+      );
+      this.rootStyle.setProperty(
+        "--Points-left",
+        `${parseInt(getComputedStyle(document.querySelector("body")).width) /
+          2 -
+          pointsBounds.width / 2}px`
+      );
       this.rootStyle.setProperty(
         "--Score-left",
         `${tvBounds.left + tvBounds.width * 0.802 - scoreBounds.width / 2}px`
@@ -56,33 +71,33 @@ export default class DOM {
         `${tvBounds.top + tvBounds.height * 0.504 - scoreBounds.height / 2}px`
       );
     });
-    document.defaultView.window.addEventListener("load", () => {
-      console.log("loaded");
+    // document.defaultView.window.addEventListener("load", () => {
+    //   console.log("loaded");
 
-      const TVsize = getComputedStyle(this.background).height;
-      const targetSize = parseInt(TVsize) - 20;
+    //   const TVsize = getComputedStyle(this.background).height;
+    //   const targetSize = parseInt(TVsize) - 20;
 
-      this.rootStyle.setProperty(
-        "--TV-size",
-        `${this.background.getBoundingClientRect().height}px`
-      );
-      this.rootStyle.setProperty(
-        "--Score-left",
-        `${tvBounds.left + tvBounds.width * 0.802}px`
-      );
-      this.rootStyle.setProperty(
-        "--Score-top",
-        `${tvBounds.top + tvBounds.height * 0.504}px`
-      );
-      this.rootStyle.setProperty(
-        "--Points-height",
-        `${this.gameBounds.width}px`
-      );
-      this.rootStyle.setProperty(
-        "--Points-width",
-        `${this.gameBounds.height}px`
-      );
-    });
+    //   this.rootStyle.setProperty(
+    //     "--TV-size",
+    //     `${this.background.getBoundingClientRect().height}px`
+    //   );
+    //   this.rootStyle.setProperty(
+    //     "--Score-left",
+    //     `${tvBounds.left + tvBounds.width * 0.802}px`
+    //   );
+    //   this.rootStyle.setProperty(
+    //     "--Score-top",
+    //     `${tvBounds.top + tvBounds.height * 0.504}px`
+    //   );
+    //   this.rootStyle.setProperty(
+    //     "--Points-height",
+    //     `${this.gameBounds.width}px`
+    //   );
+    //   this.rootStyle.setProperty(
+    //     "--Points-width",
+    //     `${this.gameBounds.height}px`
+    //   );
+    // });
 
     this.leftSwatch.addEventListener(this.colorChanger_start, down);
     this.leftSwatch.addEventListener(this.colorChanger_end, up);
@@ -116,7 +131,7 @@ export default class DOM {
     function down() {
       if (clickID == -1)
         //Prevent multimple loops!
-        clickID = setInterval(whileDown, 12 /*execute every 1ms*/);
+        clickID = setInterval(whileDown, 60 /*execute every 1ms*/);
     }
     function up() {
       if (clickID != -1) {
@@ -145,7 +160,7 @@ export default class DOM {
       let left_target_hsl = this.colorConvert.rgb.hsl(target_rgb_intARR);
 
       let new_target_color_hsl = [
-        left_target_hsl[0] + 2,
+        left_target_hsl[0] + 10,
         ...left_target_hsl.slice(1),
       ];
 
@@ -160,7 +175,8 @@ export default class DOM {
     };
 
     const randomRGB_style = () => {
-      let random_0_to_359 = Math.floor(Math.random() * 359);
+      let random_0_to_359 =
+        Math.round(Math.floor(Math.random() * 359) / 10) * 10;
       let hsl_arr = [random_0_to_359, 100, 50];
 
       let rgb_arr = this.colorConvert.hsl.rgb(hsl_arr);
@@ -190,24 +206,47 @@ export default class DOM {
       return HSLs_array;
     };
     const getScore = () => {
-      document
-        .getElementById("leftSwatch")
-        .style.setProperty("pointer-events", "none");
+      document.getElementById("leftSwatch");
+      // .style.setProperty("pointer-events", "none");
+      const pointsBounds = this.points.getBoundingClientRect();
       let points = 0;
-      let leftSwatch = convertStyles_RGBtoHSL(this.leftSwatch);
-      let rightSwatch = convertStyles_RGBtoHSL(this.rightSwatch);
-      if (leftSwatch[0] > rightSwatch[0]) {
-        points = leftSwatch[0] - rightSwatch[0];
+      let diff = 0;
+      let leftSwatch = convertStyles_RGBtoHSL(this.leftSwatch)[0];
+      let rightSwatch = convertStyles_RGBtoHSL(this.rightSwatch)[0];
+      console.log(leftSwatch);
+      console.log(rightSwatch);
+
+      if (leftSwatch[0] < rightSwatch[0]) {
+        diff = rightSwatch[0] - leftSwatch[0];
       } else {
-        points += rightSwatch[0] - leftSwatch[0];
+        diff = leftSwatch - rightSwatch;
       }
+      points = Math.floor(
+        Math.cos((leftSwatch - rightSwatch) * (Math.PI / 180)) * 100
+      );
+      console.log(diff, points);
+      debugger;
 
       let newScore = this.game.addPoints(points);
-      this.points.innerText = points;
+      if (points >= 0) {
+        this.pointsVal.innerText = `+${points}`;
+      } else {
+        this.pointsVal.innerText = `${points}`;
+      }
+      this.points.classList.toggle("hide");
+      this.points.classList.toggle("wobble-hor-bottom");
       this.score.innerText = newScore;
+      this.rootStyle.setProperty(
+        "--Points-left",
+        `${parseInt(getComputedStyle(document.querySelector("body")).width) /
+          2 -
+          pointsBounds.width / 2}px`
+      );
       setTimeout(() => {
-        newColor();
+        newColor(), this.points.classList.toggle("hide");
+        this.points.classList.toggle("wobble-hor-bottom");
       }, 1500);
+      // this.points.classList.remove("wobble-hor-bottom");
     };
 
     let swapID;

@@ -23,10 +23,22 @@ let game = new Game();
 document.defaultView.window.addEventListener("load", () => {
   let dom = new Dom();
   const tvBounds = dom.background.getBoundingClientRect();
-  const scoreBounds = dom.score.getBoundingClientRect();
-  console.log("hhh");
-
   dom.rootStyle.setProperty("--TV-size", `${tvBounds.height - 20}px`);
+  const scoreBounds = dom.score.getBoundingClientRect();
+  const pointsBounds = dom.points.getBoundingClientRect();
+  const gameBounds = dom.points.getBoundingClientRect();
+  // const pointsBounds =
+  //   parseInt(document.getElementById("points").getBoundingClientRect().width) /
+  //   2;
+  // console.log(pointsBounds);
+  // console.log(
+  //   parseInt(document.getElementById("points").getBoundingClientRect().width) /
+  //     2
+  // );
+  debugger;
+
+  dom.rootStyle.setProperty("--Swatch-width", `${tvBounds.height / 4}px`);
+  dom.rootStyle.setProperty("--Swatch-height", `${tvBounds.height / 2}px`);
   dom.rootStyle.setProperty(
     "--Score-left",
     `${tvBounds.left + tvBounds.width * 0.802 - scoreBounds.width / 2}px`
@@ -37,6 +49,14 @@ document.defaultView.window.addEventListener("load", () => {
   );
   dom.rootStyle.setProperty("--Points-height", `${dom.gameBounds.width}px`);
   dom.rootStyle.setProperty("--Points-width", `${dom.gameBounds.height}px`);
+  dom.rootStyle.setProperty(
+    "--Points-top",
+    `${tvBounds.height * 0.42 - pointsBounds.height / 2}px`
+  );
+  dom.rootStyle.setProperty(
+    "--Points-left",
+    `${parseInt(getComputedStyle(document.querySelector("body")).width) / 2}px`
+  );
   // const tv = document.getElementById("background");
   // const TVsize = getComputedStyle(tv).height;
   // const targetSize = parseInt(TVsize) - 20;
