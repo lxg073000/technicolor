@@ -213,8 +213,6 @@ export default class DOM {
       let diff = 0;
       let leftSwatch = convertStyles_RGBtoHSL(this.leftSwatch)[0];
       let rightSwatch = convertStyles_RGBtoHSL(this.rightSwatch)[0];
-      console.log(leftSwatch);
-      console.log(rightSwatch);
 
       if (leftSwatch[0] < rightSwatch[0]) {
         diff = rightSwatch[0] - leftSwatch[0];
@@ -224,8 +222,6 @@ export default class DOM {
       points = Math.floor(
         Math.cos((leftSwatch - rightSwatch) * (Math.PI / 180)) * 100
       );
-      console.log(diff, points);
-      debugger;
 
       let newScore = this.game.addPoints(points);
       if (points >= 0) {
@@ -253,7 +249,6 @@ export default class DOM {
     let colorSwapper = 0;
 
     function newColor() {
-      debugger;
       swapID = setInterval(() => {
         document
           .querySelector(":root")

@@ -35,7 +35,6 @@ document.defaultView.window.addEventListener("load", () => {
   //   parseInt(document.getElementById("points").getBoundingClientRect().width) /
   //     2
   // );
-  debugger;
 
   dom.rootStyle.setProperty("--Swatch-width", `${tvBounds.height / 4}px`);
   dom.rootStyle.setProperty("--Swatch-height", `${tvBounds.height / 2}px`);
