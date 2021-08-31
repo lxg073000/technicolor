@@ -1,3 +1,5 @@
+import "./screenshot.png";
+import "./logo_technicolor.png";
 import "./TV17.png";
 import "./TV.png";
 import "./bg-rainbow.png";

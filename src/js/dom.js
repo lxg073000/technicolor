@@ -41,6 +41,13 @@ export default class DOM {
 
     //Assign events
 
+    document.getElementById("logo").addEventListener("click", () => {
+      document.getElementById("header").classList.toggle("expand");
+    });
+    document.getElementById("header").addEventListener("click", () => {
+      document.getElementById("header").classList.toggle("expand");
+    });
+
     this.gameWindow.addEventListener("resize", () => {
       let tvBounds = this.background.getBoundingClientRect();
       let scoreBounds = this.score.getBoundingClientRect();

@@ -5,7 +5,7 @@
   --RC: hsl(60deg 100% 50%);
   --TV-left: 0;
   --TV-top: 0;
-  --Score-left: 0;
+  --Score-left: 1000px;
   --Score-top: 0;
   --ScoreBG-width: 0;
   --ScoreBG-height: 0;
@@ -29,6 +29,12 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   font-weight: 100;
+  text-decoration: none;
+  list-style: none;
+  a,
+  a:visited {
+    color: inherit;
+  }
 }
 
 body {
@@ -46,6 +52,99 @@ body {
   margin: auto;
   background-size: auto;
   box-shadow: inset 0 -111px 50px 7px #00000047;
+}
+
+img#logo {
+  width: clamp(10vw, 100%, 500px);
+  margin: auto;
+  z-index: 6;
+  cursor: pointer;
+  transition: filter 333ms ease-in-out;
+  &:hover {
+    filter: drop-shadow(2px 4px 6px black);
+  }
+}
+
+#header {
+  position: fixed;
+  display: grid;
+  left: 0;
+  top: -2em;
+  width: 100vw;
+  height: 2em;
+  background: #333333d1;
+  z-index: 5;
+  overflow: hidden;
+  transition: height 333ms ease;
+
+  .howto {
+    text-align: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: clamp(1em, 2vw, 2vw);
+    background: black url("../images/bgStripes.png");
+    border-radius: 50%;
+    height: clamp(300px, 100%, 400px);
+    width: clamp(300px, 100%, 420px);
+    justify-content: center;
+    background-size: contain;
+    background-position: center;
+    p {
+      color: #ffffffc4;
+      font-weight: 600;
+      text-shadow: 2px 2px black, 4px 4px 6px black;
+      text-transform: uppercase;
+      span {
+        font-weight: 800;
+        color: white;
+      }
+    }
+  }
+}
+
+.expand {
+  height: 100vh !important;
+  top: 0 !important;
+}
+
+#footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 2em;
+  background: #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+ul.footer-list {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  span {
+    position: relative;
+    font-size: 1em;
+    transition: filter 333ms ease-in-out;
+    &:hover {
+      filter: drop-shadow(0px 1px 6px black);
+    }
+    // &:after {
+    //   position: absolute;
+    //   content: "";
+    //   left: -50%;
+    //   bottom: 0;
+    //   width: 200%;
+    //   height: 100%;
+    //   background: black;
+    //   z-index: -1;
+    // }
+  }
 }
 
 div#root {

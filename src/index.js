@@ -21,7 +21,6 @@ let game = new Game();
 // }
 // });
 document.defaultView.window.addEventListener("load", () => {
-  debugger;
   let dom = new Dom();
   const tvBounds = dom.background.getBoundingClientRect();
   dom.rootStyle.setProperty("--TV-size", `${tvBounds.height - 20}px`);
