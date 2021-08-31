@@ -193,7 +193,7 @@ eval("\n\n/* eslint-disable */\nfunction normalizeUrl(pathComponents) {\n  retur
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1630427260361\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://technicolor/./src/styles/main.scss?./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet%5B1%5D.rules%5B3%5D.use%5B2%5D!./node_modules/postcss-loader/dist/cjs.js??ruleSet%5B1%5D.rules%5B3%5D.use%5B3%5D!./node_modules/sass-loader/dist/cjs.js??ruleSet%5B1%5D.rules%5B3%5D.use%5B4%5D");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1630430718614\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://technicolor/./src/styles/main.scss?./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet%5B1%5D.rules%5B3%5D.use%5B2%5D!./node_modules/postcss-loader/dist/cjs.js??ruleSet%5B1%5D.rules%5B3%5D.use%5B3%5D!./node_modules/sass-loader/dist/cjs.js??ruleSet%5B1%5D.rules%5B3%5D.use%5B4%5D");
 
 /***/ }),
 
@@ -486,7 +486,7 @@ eval("module.exports = __webpack_require__.p + \"./images/wallpaper_2.png\";\n\n
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("cd5fcd940104118f53dc")
+/******/ 		__webpack_require__.h = () => ("1d26aa313b7a338d1712")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
