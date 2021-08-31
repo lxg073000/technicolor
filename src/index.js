@@ -21,6 +21,7 @@ let game = new Game();
 // }
 // });
 document.defaultView.window.addEventListener("load", () => {
+  debugger;
   let dom = new Dom();
   const tvBounds = dom.background.getBoundingClientRect();
   dom.rootStyle.setProperty("--TV-size", `${tvBounds.height - 20}px`);
@@ -36,16 +37,45 @@ document.defaultView.window.addEventListener("load", () => {
   //     2
   // );
 
-  dom.rootStyle.setProperty("--Swatch-width", `${tvBounds.height / 4}px`);
-  dom.rootStyle.setProperty("--Swatch-height", `${tvBounds.height / 2}px`);
   dom.rootStyle.setProperty(
-    "--Score-left",
-    `${tvBounds.left + tvBounds.width * 0.802 - scoreBounds.width / 2}px`
+    "--ScoreBG-width",
+    `${document.querySelector("#background").getBoundingClientRect().width *
+      0.22}px`
+  );
+  dom.rootStyle.setProperty(
+    "--ScoreBG-height",
+    `${document.querySelector("#background").getBoundingClientRect().height *
+      0.22}px`
+  );
+  dom.rootStyle.setProperty(
+    "--ScoreBG-top",
+    `${document.querySelector("#background").getBoundingClientRect().height *
+      0.588}px`
+  );
+  dom.rootStyle.setProperty(
+    "--ScoreBG-left",
+    `${document.querySelector("#background").getBoundingClientRect().height *
+      0.588}px`
+  );
+  console.log(
+    document.querySelector("#background").getBoundingClientRect().height * 0.588
   );
   dom.rootStyle.setProperty(
     "--Score-top",
-    `${tvBounds.top + tvBounds.height * 0.504 - scoreBounds.height / 2}px`
+    `${document.querySelector("#background").getBoundingClientRect().top +
+      document.querySelector("#background").getBoundingClientRect().height *
+        0.675 -
+      document.querySelector("#score").getBoundingClientRect().height / 2}px`
   );
+  dom.rootStyle.setProperty(
+    "--Score-left",
+    `${document.querySelector("#background").getBoundingClientRect().left +
+      document.querySelector("#background").getBoundingClientRect().width *
+        0.7 -
+      document.querySelector("#score").getBoundingClientRect().width / 2}px`
+  );
+  dom.rootStyle.setProperty("--Swatch-width", `${tvBounds.height / 4}px`);
+  dom.rootStyle.setProperty("--Swatch-height", `${tvBounds.height / 2}px`);
   dom.rootStyle.setProperty("--Points-height", `${dom.gameBounds.width}px`);
   dom.rootStyle.setProperty("--Points-width", `${dom.gameBounds.height}px`);
   dom.rootStyle.setProperty(

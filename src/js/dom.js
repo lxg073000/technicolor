@@ -49,6 +49,42 @@ export default class DOM {
       let TVsize = getComputedStyle(this.background).height;
       let targetSize = parseInt(TVsize) - 20;
 
+      this.rootStyle.setProperty(
+        "--ScoreBG-width",
+        `${document.querySelector("#background").getBoundingClientRect().width *
+          0.22}px`
+      );
+      this.rootStyle.setProperty(
+        "--ScoreBG-height",
+        `${document.querySelector("#background").getBoundingClientRect()
+          .height * 0.22}px`
+      );
+      this.rootStyle.setProperty(
+        "--ScoreBG-top",
+        `${document.querySelector("#background").getBoundingClientRect()
+          .height * 0.588}px`
+      );
+      this.rootStyle.setProperty(
+        "--ScoreBG-left",
+        `${document.querySelector("#background").getBoundingClientRect()
+          .height * 0.588}px`
+      );
+      this.rootStyle.setProperty(
+        "--Score-top",
+        `${document.querySelector("#background").getBoundingClientRect().top +
+          document.querySelector("#background").getBoundingClientRect().height *
+            0.675 -
+          document.querySelector("#score").getBoundingClientRect().height /
+            2}px`
+      );
+      this.rootStyle.setProperty(
+        "--Score-left",
+        `${document.querySelector("#background").getBoundingClientRect().left +
+          document.querySelector("#background").getBoundingClientRect().width *
+            0.7 -
+          document.querySelector("#score").getBoundingClientRect().width / 2}px`
+      );
+
       this.rootStyle.setProperty("--TV-size", `${targetSize}px`);
       this.rootStyle.setProperty("--Swatch-width", `${targetSize / 4}px`);
       this.rootStyle.setProperty("--Swatch-height", `${targetSize / 2}px`);
@@ -61,14 +97,6 @@ export default class DOM {
         `${parseInt(getComputedStyle(document.querySelector("body")).width) /
           2 -
           pointsBounds.width / 2}px`
-      );
-      this.rootStyle.setProperty(
-        "--Score-left",
-        `${tvBounds.left + tvBounds.width * 0.802 - scoreBounds.width / 2}px`
-      );
-      this.rootStyle.setProperty(
-        "--Score-top",
-        `${tvBounds.top + tvBounds.height * 0.504 - scoreBounds.height / 2}px`
       );
     });
     // document.defaultView.window.addEventListener("load", () => {
