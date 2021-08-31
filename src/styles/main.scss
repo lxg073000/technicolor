@@ -226,6 +226,11 @@ target {
   grid-row: 1;
   background: var(--LC);
   justify-self: flex-end;
+  cursor: pointer;
+  transition: box-shadow 333ms ease-in-out;
+  &:hover {
+    box-shadow: inset 0 0 20px 4px #00000091;
+  }
   * {
     margin: auto;
   }
