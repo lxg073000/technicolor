@@ -62,7 +62,7 @@ body {
 img#logo {
   position: fixed;
   left: calc(50vw - var(--Logo-left));
-  width: clamp(10vw, 100%, 500px);
+  width: clamp(10vw, 90vw, 590px);
   margin: auto;
   margin-top: 3vh;
   z-index: 6;
