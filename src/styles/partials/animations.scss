@@ -320,3 +320,33 @@
     opacity: 1;
   }
 }
+
+.loading {
+  animation: loading 300ms 300ms linear both;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.loading2 {
+  animation: loading 300ms 1200ms linear both;
+}
+
+@keyframes loading2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.bounce-in-top {
+  -webkit-animation: bounce-in-top 1.1s both;
+  animation: bounce-in-top 1.1s both;
+}

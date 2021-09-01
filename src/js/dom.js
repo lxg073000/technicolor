@@ -56,6 +56,13 @@ export default class DOM {
       document
         .querySelector(":root")
         .style.setProperty(
+          "--Logo-left",
+          `${document.querySelector("#logo").getBoundingClientRect().width /
+            2}px`
+        );
+      document
+        .querySelector(":root")
+        .style.setProperty(
           "--Score-font-size",
           `${document.querySelector("#background").getBoundingClientRect()
             .width * 0.044}px`
