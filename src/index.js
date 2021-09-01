@@ -72,7 +72,7 @@ document.defaultView.window.addEventListener("load", () => {
   dom.rootStyle.setProperty(
     "--ScoreBG-width",
     `${document.querySelector("#background").getBoundingClientRect().width *
-      0.22}px`
+      0.3}px`
   );
   dom.rootStyle.setProperty(
     "--ScoreBG-height",

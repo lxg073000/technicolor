@@ -71,7 +71,7 @@ export default class DOM {
       this.rootStyle.setProperty(
         "--ScoreBG-width",
         `${document.querySelector("#background").getBoundingClientRect().width *
-          0.22}px`
+          0.3}px`
       );
       this.rootStyle.setProperty(
         "--ScoreBG-height",
