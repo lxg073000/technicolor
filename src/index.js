@@ -22,13 +22,8 @@ let game = new Game();
 // });
 let device = "";
 document.addEventListener("DOMContentLoaded", () => {
-  document
-    .querySelector(":root")
-    .style.setProperty(
-      "--Score-font-size",
-      `${document.querySelector("#background").getBoundingClientRect().width *
-        0.044}px`
-    );
+  debugger;
+
   function mobileAndTabletCheck() {
     let check = false;
     (function(a) {
@@ -51,6 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.defaultView.window.addEventListener("load", () => {
+  document
+    .querySelector(":root")
+    .style.setProperty(
+      "--Score-font-size",
+      `${document.querySelector("#background").getBoundingClientRect().width *
+        0.044}px`
+    );
   let dom = new Dom(device);
   const tvBounds = dom.background.getBoundingClientRect();
   dom.rootStyle.setProperty("--TV-size", `${tvBounds.height - 20}px`);
