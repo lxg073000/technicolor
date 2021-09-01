@@ -40,6 +40,10 @@
   }
 }
 
+target {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   display: grid;
   // height: clamp(380px, 1000px, 100vh);
