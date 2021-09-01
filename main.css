@@ -322,7 +322,6 @@
   --TV-top: 0;
   --Score-left: -100vw;
   --Score-top: -100vh;
-  --Score-font-size: 0;
   --ScoreBG-width: 0;
   --ScoreBG-height: 0;
   --TV-size: 100%;
@@ -508,8 +507,7 @@ section.game {
   grid-column: 1/-1;
   color: hsl(60deg 100% 50%);
   color: var(--RC);
-  text-shadow: 3px 3px black, 6px 4px black, 0px 1px 12px black;
-  font-size: 0;
+  text-shadow: 0px 0px 0px black, 1px 1px white, 3px 3px black, 6px 4px black, 0px 1px 12px black, -1px -1px 0px white, 4px 4px 0px white, 5px 5px 0px white, 8px 6px 3px white;
   font-size: var(--Score-font-size);
   font-weight: 900;
   left: -100vw;
