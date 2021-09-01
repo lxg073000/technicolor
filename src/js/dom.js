@@ -120,7 +120,6 @@ export default class DOM {
     });
 
     this.leftSwatch.addEventListener(this.colorChanger_start, (e) => {
-      debugger;
       if (e.which === 1 || e.which === 0) {
         down();
       }
