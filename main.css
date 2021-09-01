@@ -315,6 +315,42 @@
   100% {
     opacity: 1; } }
 
+.loading {
+  -webkit-animation: loading 300ms 300ms linear both;
+          animation: loading 300ms 300ms linear both; }
+
+@-webkit-keyframes loading {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes loading {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.loading2 {
+  -webkit-animation: loading 300ms 1200ms linear both;
+          animation: loading 300ms 1200ms linear both; }
+
+@-webkit-keyframes loading2 {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes loading2 {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.bounce-in-top {
+  -webkit-animation: bounce-in-top 1.1s both;
+  animation: bounce-in-top 1.1s both; }
+
 :root {
   --LC: hsl(0deg 100% 50%);
   --RC: hsl(60deg 100% 50%);
@@ -370,13 +406,16 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   margin: auto;
-  background-size: auto;
+  background-size: cover;
   -webkit-box-shadow: inset 0 -111px 50px 7px rgba(0,0,0,0.27843);
           box-shadow: inset 0 -111px 50px 7px rgba(0,0,0,0.27843); }
 
 img#logo {
+  position: fixed;
+  left: calc(50vw - var(--Logo-left));
   width: clamp(10vw, 100%, 500px);
   margin: auto;
+  margin-top: 3vh;
   z-index: 6;
   cursor: pointer;
   -webkit-transition: -webkit-filter 333ms ease-in-out;
@@ -393,7 +432,7 @@ img#logo {
   left: 0;
   top: -2em;
   width: 100vw;
-  height: 2em;
+  height: 0;
   background: rgba(51,51,51,0.81961);
   z-index: 5;
   overflow: hidden;
