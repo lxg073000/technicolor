@@ -322,6 +322,7 @@
   --TV-top: 0;
   --Score-left: -100vw;
   --Score-top: -100vh;
+  --Score-font-size: 0;
   --ScoreBG-width: 0;
   --ScoreBG-height: 0;
   --TV-size: 100%;
@@ -358,7 +359,6 @@ target {
 
 body {
   display: grid;
-  min-width: 500px;
   height: 100vh;
   overflow: hidden;
   -ms-flex-line-pack: center;
@@ -480,7 +480,7 @@ div#root {
   grid-template-rows: 1fr; }
 
 img#background {
-  width: clamp(500px, 80vh, 100%);
+  width: clamp(200px, 80vh, 100%);
   grid-row: 1;
   grid-column: 1/-1;
   margin: auto;
@@ -509,7 +509,8 @@ section.game {
   color: hsl(60deg 100% 50%);
   color: var(--RC);
   text-shadow: 3px 3px black, 6px 4px black, 0px 1px 12px black;
-  font-size: 2em;
+  font-size: 0;
+  font-size: var(--Score-font-size);
   font-weight: 900;
   left: -100vw;
   left: var(--Score-left);
