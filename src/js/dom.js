@@ -30,8 +30,6 @@ export default class DOM {
       this.colorChanger_start = "touchstart";
       this.colorChanger_end = "touchend";
       this.colorChanger_cancel = "touchcancel";
-      debugger;
-      this.score.style.fontSize = "2rem";
     } else {
       this.colorChanger_start = "mousedown";
       this.colorChanger_end = "mouseup";
@@ -54,6 +52,14 @@ export default class DOM {
 
       let TVsize = getComputedStyle(this.background).height;
       let targetSize = parseInt(TVsize) - 20;
+
+      document
+        .querySelector(":root")
+        .style.setProperty(
+          "--Score-font-size",
+          `${document.querySelector("#background").getBoundingClientRect()
+            .width * 0.044}px`
+        );
 
       this.rootStyle.setProperty(
         "--ScoreBG-width",

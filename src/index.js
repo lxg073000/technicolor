@@ -22,6 +22,13 @@ let game = new Game();
 // });
 let device = "";
 document.addEventListener("DOMContentLoaded", () => {
+  document
+    .querySelector(":root")
+    .style.setProperty(
+      "--Score-font-size",
+      `${document.querySelector("#background").getBoundingClientRect().width *
+        0.044}px`
+    );
   function mobileAndTabletCheck() {
     let check = false;
     (function(a) {

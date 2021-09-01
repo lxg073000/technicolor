@@ -7,6 +7,7 @@
   --TV-top: 0;
   --Score-left: -100vw;
   --Score-top: -100vh;
+  --Score-font-size: 0;
   --ScoreBG-width: 0;
   --ScoreBG-height: 0;
   --TV-size: 100%;
@@ -46,8 +47,6 @@ target {
 
 body {
   display: grid;
-  // height: clamp(380px, 1000px, 100vh);
-  min-width: 500px;
   height: 100vh;
   overflow: hidden;
   align-content: center;
@@ -141,16 +140,6 @@ ul.footer-list {
     &:hover {
       filter: drop-shadow(0px 1px 6px black);
     }
-    // &:after {
-    //   position: absolute;
-    //   content: "";
-    //   left: -50%;
-    //   bottom: 0;
-    //   width: 200%;
-    //   height: 100%;
-    //   background: black;
-    //   z-index: -1;
-    // }
   }
 }
 
@@ -160,16 +149,8 @@ div#root {
   grid-template-rows: 1fr;
 }
 
-// #root {
-//   background: url("../images/tvBurst.png");
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   max-width: 1000px;
-//   background-size: cover;
-// }
-
 img#background {
-  width: clamp(500px, 80vh, 100%);
+  width: clamp(200px, 80vh, 100%);
   grid-row: 1;
   grid-column: 1/-1;
   margin: auto;
@@ -195,7 +176,7 @@ section.game {
   grid-column: 1/-1;
   color: var(--RC);
   text-shadow: 3px 3px black, 6px 4px black, 0px 1px 12px black;
-  font-size: 2em;
+  font-size: var(--Score-font-size);
   font-weight: 900;
   left: var(--Score-left);
   top: var(--Score-top);
@@ -213,16 +194,7 @@ section.game {
   }
 }
 
-// .tv {
-//   grid-column: 1 / -1;
-//   grid-row: 2;
-//   // width: 70%;
-//   // justify-self: center;
-//   // align-self: center;
-//   z-index: 1;
-// }
 target {
-  // width: clamp(150px, 40%, 100%);
   width: var(--Swatch-width);
   height: var(--Swatch-height);
   align-self: center;
@@ -252,24 +224,7 @@ target {
   }
 }
 
-// #score {
-//   position: absolute;
-//   left: calc(var(--Score-left));
-//   top: calc(var(--Score-top));
-//   color: wheat;
-//   z-index: 2;
-//   &:before {
-//     content: "";
-//     position: absolute;
-//     top: -260%;
-//     left: -122%;
-//     transition: all 3s ease;
-//   }
-// }
-
 #points {
-  // background: #90ee906e;
-  // display: none;
   grid-column: 1 / -1;
   grid-row: 1;
   display: grid;
@@ -278,20 +233,6 @@ target {
   margin-top: var(--Points-top);
   justify-content: center;
   height: fit-content;
-  // margin-top: var(--Points-top);
-  // margin: auto;
-  // display: grid;
-  // place-content: center;
-  // font-size: calc(var(--Points-width) / 4);
-  // transform: translate(0%, -27%) scale(0.5);
-
-  //   display: grid;
-  //   justify-content: center;
-  //   height: 100%;
-  //   // position: absolute;
-  //   // left: var(--Points-left);
-  //   // top: var(--Points-top);
-  //   place-content: center;
   p {
     text-shadow: 5px 5px #ffffff82, 10px 10px #b1b1b18c,
       15px 15px 14px var(--LC), -5px -5px 14px var(--RC);
@@ -301,156 +242,3 @@ target {
     font-weight: 800;
   }
 }
-// .sm-menu {
-//   display: none;
-// }
-
-// body {
-//   margin: auto;
-//   background: #fefdfb;
-
-//   pointer-events: none;
-//   // overflow: hidden;
-// }
-
-// #root {
-//   display: grid;
-//   // height: 100vh;
-//   max-width: 1100px;
-//   margin: auto;
-//   // padding: 2em 1em;
-//   grid-template-columns: repeat(12, 1fr);
-//   // grid-template-rows: 4em 1fr 4em;
-//   grid-template-rows: 1fr;
-//   gap: 1em;
-//   place-content: center;
-//   // overflow: hidden;
-//   background-image: url("../images/tvBurst.png");
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   background-position: center;
-// }
-// .game {
-//   grid-column: 1 / -1;
-//   grid-row: 2;
-//   display: grid;
-//   grid-template-columns: 10px 1fr 1fr 10px;
-//   grid-template-rows: 1fr;
-//   // padding-top: 2em;
-//   border-radius: calc(100vw / 2);
-//   box-shadow: inset -13px -1px 16px 8px #56371694;
-//   width: clamp(837px, 100%, 1100px);
-//   justify-self: center;
-//   // background: #faebd7bf;
-//   pointer-events: none;
-// }
-
-// #remote {
-//   grid-column: 1 / -1;
-//   grid-row: 1;
-//   z-index: 100;
-//   justify-self: center;
-//   transform: translate(3vw, 61vh) rotate(17deg);
-//   transition: transform 1s ease;
-//   pointer-events: all;
-//   &:hover {
-//     transform: translate(4vw, 34%) rotate(0deg);
-//   }
-// }
-
-// .header {
-//   grid-column: 1 / -1;
-//   align-content: center;
-//   justify-content: center;
-//   background: url("../images/technicolor.png");
-//   background-size: contain;
-//   background-repeat: no-repeat;
-//   background-position: center;
-// }
-// .tools {
-//   grid-column: 1 / -1;
-//   display: flex;
-//   justify-content: space-evenly;
-//   align-items: center;
-// }
-
-// section {
-//   height: 100%;
-//   display: grid;
-//   overflow: hidden;
-// }
-
-// img.banner_game_background {
-//   object-fit: cover;
-//   position: relative;
-//   width: 100%;
-//   padding: 20% 0;
-//   background: conic-gradient(
-//     from 270deg,
-//     #dccfc6 65%,
-//     #efe6df 80%,
-//     #d1bbae 40%
-//   );
-//   &:before {
-//     content: "";
-//     position: absolute;
-//     left: 0;
-//     bottom: 0;
-//     width: 100px;
-//     height: 500px;
-//     background: red;
-//   }
-// }
-
-// @media screen and (max-width: 140px) {
-//   #root {
-//     display: grid;
-//     grid-template-columns: repeat(12, 1fr);
-//     grid-template-rows: 1fr 10fr 1fr;
-//     // height: 100vh;
-//   }
-//   .game {
-//     grid-template-columns: 1fr 1fr;
-//     grid-template-rows: 1fr;
-//     background: transparent;
-//   }
-//   .tv {
-//     // width: clamp(520px, 120vw, 120vw);
-//   }
-//   .header {
-//     grid-column: 2 / span 10;
-//     img.logo {
-//       margin: auto;
-//       width: 100%;
-//     }
-//   }
-//   target {
-//     // display: grid;
-//     // height: 390px;
-//     // width: 200px;
-//     // align-self: center;
-//     // width: 100%;
-//     // height: 100%;
-//     // align-self: auto;
-//     // position: static;
-//     // display: grid;
-//   }
-//   .target_left {
-//     grid-column: 1;
-//     grid-row: 1;
-//   }
-//   .target_right {
-//     grid-column: 2;
-//     grid-row: 1;
-//   }
-//   .tools {
-//     grid-column: 2 / span 10;
-//     gap: 6px;
-//     i {
-//       font-size: 1em;
-//       color: white;
-//       // padding: 1em;
-//       text-align: center;
-//     }
-//   }
-// }
