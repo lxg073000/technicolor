@@ -353,6 +353,9 @@
   * a:visited {
     color: inherit; }
 
+target {
+  -webkit-tap-highlight-color: transparent; }
+
 body {
   display: grid;
   min-width: 500px;
