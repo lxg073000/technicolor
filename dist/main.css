@@ -401,7 +401,6 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  max-width: 1000px;
   background: url(./images/tvBurst.png), #00eefa;
   background-repeat: no-repeat;
   background-position: center;
